@@ -28,9 +28,13 @@ namespace CRUD_MVC.Controllers
                 return View();
             }
             Console.WriteLine("UsuarioEncontradoMVC");
-            return RedirectToAction("Index", "Home");
-            
-
+            if (usuario_encontrado.codigoAcceso == 4) {
+                return RedirectToAction();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

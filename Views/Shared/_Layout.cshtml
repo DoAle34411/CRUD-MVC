@@ -14,27 +14,51 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Index" asp-action="Producto" asp-action="Vendedor" >Libros con Limón y Sal</a>
-                <button class="navbar-toggler custom-background-color" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Producto" asp-action="Index">Producto</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Vendedor" asp-action="Indice">Vendedores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
-                        </li>
-                    </ul>
-                </div>
+                @if (ViewData["Title"].ToString() == "Home Page Cliente")
+                {
+                    <a class="navbar-brand text-white custom-background-color" asp-area="" asp-controller="ProductoCliente" asp-action="Index" asp-action="ProductoCliente">Libros con Limón y Sal</a>
+                    <button class="navbar-toggler custom-background-color" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="ProductoCliente" asp-action="Index">Producto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="ProductoCliente" asp-action="Privacy">Privacidad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                {
+                    <a class="navbar-brand text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Index" asp-action="Producto" asp-action="Vendedor">Libros con Limón y Sal</a>
+                    <button class="navbar-toggler custom-background-color" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Producto" asp-action="Index">Producto</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Vendedor" asp-action="Indice">Vendedores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
             </div>
         </nav>
     </header>
