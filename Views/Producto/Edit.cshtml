@@ -1,0 +1,41 @@
+﻿@model Producto
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se editan los productos.</p>
+
+<form method="post">
+    <input type="hidden" asp-for="IdProducto"/>
+
+    <div class="mb-3">
+        <label>Nombre</label>
+        <input asp-for="Nombre" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Autor</label>
+        <input asp-for="Autor" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Genero</label>
+        <input asp-for="Genero" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Descripción</label>
+        <textarea asp-for="Descripcion" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Cantidad</label>
+        <input asp-for="Cantidad" class="form-control">
+    </div>
+    <div class="row col-6">
+        <div class="col-6">
+            <a asp-action="Index" class="btn custom-btn-color-2">Regresar</a>
+        </div>
+        <div class="col-6">
+            <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,36 @@
+﻿@model Vendedor
+@{
+    ViewData["Title"] = "Detalles de Productos";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se muestra el detalle de los productos.</p>
+<form method="post">
+<div class="mb-3">
+    <label>Nombres</label>
+    <input asp-for="Nombres" class="form-control">
+</div>
+<div class="mb-3">
+    <label>Apellidos</label>
+    <input asp-for="Apellidos" class="form-control">
+</div>
+<div class="mb-3">
+    <label>Cantidad Ventas</label>
+    <input asp-for="CantidadVentas" class="form-control">
+</div>
+<div class="mb-3">
+    <label for="EsActivo">Vendedor Activo</label>
+    <select asp-for="EsActivo" class="form-control">
+        <option value="Si">Si</option>
+        <option value="No">No</option>
+    </select>
+</div>
+<div class="row col-6">
+    <div class="col-6">
+            <a asp-action="Indice" class="btn custom-btn-color-2">Regresar</a>
+    </div>
+    <div class="col-6">
+            <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
+    </div>
+</div>
+</form>

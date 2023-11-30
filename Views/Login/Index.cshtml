@@ -1,0 +1,27 @@
+﻿@model User
+<div class="split left">
+    <div class="centered">
+        <img src="https://greenvillejournal.com/wp-content/uploads/2021/12/stack-of-books-in-home-interior-picture-id532852345.jpg" class="card-img" alt="Libros">
+        <h2 style="padding: 40px 0px 10px 0px">Libros con Limon y Sal</h2>
+        <p>Vista Admin</p>
+    </div>
+</div>
+
+<div class="split right">
+    <form method="post">
+    <div class="centered">
+        <h2>Inicio Sesion</h2>
+        <div class="mb-3" style="padding: 20px 1px 10px">
+            <label>ID Usuario:</label>
+            <input asp-for="IdUsuario" class="form-control">
+        </div>
+        <div class="mb-3" style="padding: 20px 1px 10px">
+            <label>Clave:</label>
+            <input asp-for="Clave" class="form-control" type="password">
+        </div>
+        <div class="mb-3" style="padding: 20px 1px 10px">
+            <button type="submit" class="btn custom-btn-color">Iniciar Sesion</button>
+        </div>
+    </div>
+    </form>
+</div> 
