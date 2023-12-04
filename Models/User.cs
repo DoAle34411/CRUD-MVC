@@ -10,7 +10,7 @@ namespace CRUD_MVC.Models
         [Required]
         public string Clave { get; set; }
         [Required]
-        public int codigoAcceso { get; set }
+        public int codigoAcceso { get; set; }
         
     }
 }

@@ -33,7 +33,7 @@ namespace CRUD_MVC.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home", usuario_encontrado);
             }
         }
     }

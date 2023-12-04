@@ -13,9 +13,9 @@ namespace CRUD_MVC.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(User usuario_encontrado)
         {
-            return View();
+            return View(usuario_encontrado);
         }
 
         public IActionResult Privacy()
