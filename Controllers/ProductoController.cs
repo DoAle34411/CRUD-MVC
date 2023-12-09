@@ -1,6 +1,7 @@
 ﻿using CRUD_MVC.Models;
 using CRUD_MVC.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace CRUD_MVC.Controllers
 {
@@ -15,10 +16,16 @@ namespace CRUD_MVC.Controllers
 
 
         // GET: ProductoController
-        public async Task<IActionResult> Index(User user)
+        public async Task<IActionResult> Index()
         {
+            if (HttpContext.Request.Method == "POST")
+            {
+                var userJson = HttpContext.Request.Form["user"];
+                var user = JsonSerializer.Deserialize<User>(userJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                ViewBag.User = user;
+                Console.WriteLine(user.CodigoAcceso);
+            }
             var productos = await _APIServices.GetProducts();
-            ViewBag.User = user;
             return View(productos);
         }
 

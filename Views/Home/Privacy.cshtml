@@ -1,13 +1,15 @@
-﻿@model User
-@{
+﻿@{
     ViewData["Title"] = "Privacidad";
 }
-<input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
-@if (Model.CodigoAcceso == 3)
+@{
+    User user = ViewBag.User as User;
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/system.text.json/6.0.1/system.text.json.min.js"></script>
+@if (user.CodigoAcceso == 3)
 {
     <h1 class="text-center" style="font-family: 'Times New Roman', Times, serif; padding: 20px 10px 10px">No Cuenta con Permisos en esta cuenta. Intente con otra.</h1>
 }
-else if (Model.CodigoAcceso == 4)
+else if (user.CodigoAcceso == 4)
 {
     <div class="container custom-btn-color">
         <div class="row">
@@ -35,7 +37,7 @@ else if (Model.CodigoAcceso == 4)
                 </button>
             </div>
             <div class="col-3">
-                <p>Que bueno verte de nuevo, @Model.Nombres!</p>
+                <p>Que bueno verte de nuevo, @user.Nombres!</p>
             </div>
         </div>
     </div>
@@ -46,7 +48,7 @@ else if (Model.CodigoAcceso == 4)
 
     </div>
 }
-else if (Model.CodigoAcceso == 2)
+else if (user.CodigoAcceso == 2)
 {
     <div class="container custom-btn-color">
         <div class="row">
@@ -74,7 +76,7 @@ else if (Model.CodigoAcceso == 2)
                 </button>
             </div>
             <div class="col-3">
-                <p>Que bueno verte de nuevo, @Model.Nombres!</p>
+                <p>Que bueno verte de nuevo, @user.Nombres!</p>
             </div>
         </div>
     </div>
@@ -85,67 +87,35 @@ else if (Model.CodigoAcceso == 2)
 
     </div>
 }
-else if (Model.CodigoAcceso == 1)
+else if (user.CodigoAcceso == 1)
 {
-    Console.WriteLine(Model.ToString);
+    Console.WriteLine(user.ToString);
     <div class="container custom-btn-color">
         <div class="row">
             <div class="col-4">
                 <h1 text-white>Libros Con Limon Y Sal</h1>
             </div>
             <div class="col-1">
-                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="@Model.Cedula" />
-                    <input type="hidden" name="Nombres" value="@Model.Nombres" />
-                    <input type="hidden" name="Apellidos" value="@Model.Apellidos" />
-                    <input type="hidden" name="Clave" value="@Model.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="@Model.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="@Model.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="3" />
+                <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Producto</button>
                 </form>
             </div>
             <div class="col-1">
-                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="@Model.Cedula" />
-                    <input type="hidden" name="Nombres" value="@Model.Nombres" />
-                    <input type="hidden" name="Apellidos" value="@Model.Apellidos" />
-                    <input type="hidden" name="Clave" value="@Model.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="@Model.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="@Model.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="4" />
+                <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Eventos</button>
                 </form>
             </div>
             <div class="col-1">
                 <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="@Model.Cedula" />
-                    <input type="hidden" name="Nombres" value="@Model.Nombres" />
-                    <input type="hidden" name="Apellidos" value="@Model.Apellidos" />
-                    <input type="hidden" name="Clave" value="@Model.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="@Model.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="@Model.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="2" />
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Privacidad</button>
                 </form>
             </div>
             <div class="col-1">
-                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="@Model.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="@Model.Cedula" />
-                    <input type="hidden" name="Nombres" value="@Model.Nombres" />
-                    <input type="hidden" name="Apellidos" value="@Model.Apellidos" />
-                    <input type="hidden" name="Clave" value="@Model.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="@Model.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="@Model.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="5" />
+                <form method="post" asp-area="" asp-controller="User" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Usuarios</button>
                 </form>
             </div>
@@ -155,7 +125,7 @@ else if (Model.CodigoAcceso == 1)
                 </button>
             </div>
             <div class="col-2">
-                <p>Que bueno verte de nuevo, @Model.Nombres!</p>
+                <p>Que bueno verte de nuevo, @user.Nombres!</p>
             </div>
         </div>
     </div>

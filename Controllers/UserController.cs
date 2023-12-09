@@ -1,6 +1,7 @@
 ﻿using CRUD_MVC.Models;
 using CRUD_MVC.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace CRUD_MVC.Controllers
 {
@@ -12,10 +13,15 @@ namespace CRUD_MVC.Controllers
         {
             _APIServices = servicios;
         }
-        public async Task<IActionResult> Index(User user)
+        public async Task<IActionResult> Index()
         {
+            if (HttpContext.Request.Method == "POST")
+            {
+                var userJson = HttpContext.Request.Form["user"];
+                var user = JsonSerializer.Deserialize<User>(userJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                ViewBag.User = user;
+            }
             var users = await _APIServices.GetUsers();
-            ViewBag.User = user;
             return View(users);
         }
 

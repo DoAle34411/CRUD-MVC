@@ -2,6 +2,7 @@
 using CRUD_MVC.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace CRUD_MVC.Controllers
 {
@@ -22,30 +23,25 @@ namespace CRUD_MVC.Controllers
         }
 
         [HttpPost]
-        public IActionResult Privacy(int IdUsuario, string Cedula, string Nombres, string Apellidos, string Clave, int CodigoAcceso, bool HaRetirado, int IdLibroRetirado, int Destino)
+        public IActionResult Index()
         {
-            // Create the Product object using the received parameters
-            var user = new User
+            if (HttpContext.Request.Method == "POST")
             {
-                IdUsuario = IdUsuario,
-                Cedula = Cedula,
-                Nombres = Nombres,
-                Apellidos = Apellidos,
-                Clave = Clave,
-                CodigoAcceso = CodigoAcceso,
-                HaRetirado = HaRetirado,
-                IdLibroRetirado = IdLibroRetirado,
-            };
-            if (user.CodigoAcceso == 1)
+                var userJson = HttpContext.Request.Form["user"];
+                var user = JsonSerializer.Deserialize<User>(userJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                ViewBag.User = user;
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Privacy()
+        {
+            if (HttpContext.Request.Method == "POST")
             {
-                switch (Destino)
-                {
-                    case 1: return View("Index", user);
-                    case 2: return View(user);
-                    case 3: return RedirectToAction("Index", "Producto", user);
-                    case 4: return RedirectToAction("Index", "Eventos", user);
-                    case 5: return RedirectToAction("Index", "User", user);
-                }
+                var userJson = HttpContext.Request.Form["user"];
+                var user = JsonSerializer.Deserialize<User>(userJson, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                ViewBag.User = user;
             }
             return View();
         }
