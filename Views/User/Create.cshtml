@@ -1,0 +1,35 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Crear Usuario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se crean los productos.</p>
+
+<form method="post">
+    <input type="hidden" asp-for="IdUsuario" />
+    <div class="mb-3">
+        <label>Nombres Completos:</label>
+        <input asp-for="Nombres" class="form-control" placeholder="Ej: Jose">
+    </div>
+    <div class="mb-3">
+        <label>Apellidos Completos:</label>
+        <input asp-for="Apellidos" class="form-control" placeholder="Ej: Perez">
+    </div>
+    <div class="mb-3">
+        <label>Cedula:</label>
+        <input asp-for="Cedula" class="form-control" placeholder="Ej: 9999999999">
+    </div>
+    <input type="hidden" asp-for="CodigoAcceso" value="4" />
+    <input type="hidden" asp-for="HaRetirado" value="false" />
+    <input type="hidden" asp-for="IdLibroRetirado" value="1" />
+    <div class="row col-6">
+        <div class="col-6">
+            <button type="submit" class="btn custom-btn-color-2">Regresar</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn custom-btn-color">Crear</button>
+        </div>
+    </div>
+    
+</form>

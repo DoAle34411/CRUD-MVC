@@ -1,0 +1,36 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Detalles de Usuario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se muestra el detalle de los productos.</p>
+
+<div class="mb-3">
+    <label>Nombres Completos:</label>
+    <input asp-for="Nombres" class="form-control" readonly>
+</div>
+<div class="mb-3">
+    <label>Apellidos Completos: </label>
+    <input asp-for="Apellidos" class="form-control" readonly>
+</div>
+<div class="mb-3">
+    <label>Cedula: </label>
+    <input asp-for="Cedula" readonly class="form-control">
+</div>
+<div class="mb-3">
+    <label>Tiene un libro retirado?</label>
+    <textarea asp-for="HaRetirado" readonly class="form-control"></textarea>
+</div>
+    @if (Model.HaRetirado)
+    {
+        <div class="mb-3">
+            <label>Id Libro Retirado:</label>
+            <input asp-for="IdLibroRetirado" class="form-control" readonly>
+        </div>
+    }
+<div class="row col-6">
+    <div class="col-6">
+        <a asp-action="Index" class="btn custom-btn-color">Regresar</a>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Editar Usuario";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se editan los productos.</p>
+
+<form method="post">
+    <input type="hidden" asp-for="IdUsuario"/>
+    <input type="hidden" asp-for="Clave" />
+    <div class="mb-3">
+        <label>Cedula: </label>
+        <input asp-for="Cedula" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Nombres Completos: </label>
+        <input asp-for="Nombres" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Apellidos Completos: </label>
+        <input asp-for="Apellidos" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="CodigoAcceso">Codigo Acceso:</label>
+        <select asp-for="CodigoAcceso" class="form-control">
+            <option value="1">Administrador Sistema</option>
+            <option value="2">Vendedor Activo</option>
+            <option value="3">Vendedor Inactivo</option>
+            <option value="4">Usuario Normal</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="HaRetirado">Tiene un libro retirado?</label>
+        <select asp-for="HaRetirado" class="form-control">
+            <option value="true">Si</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+    <div class="row col-6">
+        <div class="col-6">
+            <a asp-action="Index" class="btn custom-btn-color-2">Regresar</a>
+        </div>
+        <div class="col-6">
+            <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,46 @@
+﻿@model List<User>
+
+@{
+    ViewData["Title"] = "Lista de Productos";
+}
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+</head>
+<div class="text-center" style="padding: 40px 50px 10px" ;>
+    <h1 class="display-4">Usuarios Registrados</h1>
+    <p>En esta página se muestran los usuarios</a>.</p>
+</div>
+<div class="text-center" style="padding: 10px 10px 10px" ;>
+    <button type="submit" class="btn custom-btn-color" onclick="location.href='@Url.Action("Create", "User")'">Nuevo Producto</button>
+</div>
+<div class="text-center" style="padding: 20px 10px 10px" ;>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Cedula</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Ha Retirado?</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Cedula</td>
+                    <td>@item.Nombres</td>
+                    <td>@item.Apellidos</td>
+                    <td>@item.HaRetirado</td>
+                    <td class="centered-column" style="text-align: center">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <a asp-action="Details" asp-route-IdUsuario="@item.IdUsuario" class="btn custom-btn-color"><i class="fa fa-eye" aria-hidden="true"></i> </a>
+                            <a asp-action="Edit" asp-route-IdUsuario="@item.IdUsuario" class="btn custom-btn-color-2"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

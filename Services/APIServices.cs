@@ -65,9 +65,17 @@ namespace CRUD_MVC.Services
             }
         }
 
-        public Task<User> GetUser(int idUsuario)
+        public async Task<User> GetUser(int IdUsuario)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var usuario = await _httpClient.GetFromJsonAsync<User>($"api/User/{IdUsuario}");
+                return usuario;
+            }
+            catch (Exception ex)
+            {
+                return new User();
+            }
         }
 
         public async Task<Producto> POSTProducto(Producto producto)
