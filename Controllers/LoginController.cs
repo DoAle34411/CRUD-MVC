@@ -9,7 +9,7 @@ namespace CRUD_MVC.Controllers
         private readonly IAPIServices _apiService;
         public LoginController(IAPIServices apiServiceUsuario)
         {
-            _apiService= apiServiceUsuario;
+            _apiService = apiServiceUsuario;
         }
         public IActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace CRUD_MVC.Controllers
             Console.WriteLine("EnvioDatos");
             User usuario_encontrado = await _apiService.GetUser(Cedula, Clave);
             Console.WriteLine(usuario_encontrado.Nombres);
-            if (usuario_encontrado == null  || usuario_encontrado.Nombres==null)
+            if (usuario_encontrado == null || usuario_encontrado.Nombres == null)
             {
                 Console.WriteLine("UsuarioNoEncontrado1");
                 return View();
@@ -47,12 +47,12 @@ namespace CRUD_MVC.Controllers
                 await _apiService.POSTUser(user);
                 return RedirectToAction("Index", "Home", usuario_encontrado);
             }
-            else 
+            else
             {
                 Console.WriteLine("UsuarioEncontradoMVC");
                 return View();
             }
-            
+
         }
     }
 }

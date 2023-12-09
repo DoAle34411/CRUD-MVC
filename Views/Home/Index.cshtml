@@ -1,15 +1,88 @@
-﻿@Model User
+﻿@model User
 @{
     ViewData["Title"] = "Home Page";
 }
-
-<div class="card mb-3" style="width: 80rem;">
-    <div class="card-body">
-        <input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
-        <img src="https://s26162.pcdn.co/wp-content/uploads/2022/05/Best-Reviewed-Books.jpeg" class="card-img" alt="Libros">
-        <div class="card-img-overlay">
-            <h1 class="text-center text-white" style="font-family: 'Times New Roman', Times, serif ; padding: 20px 10px 10px">Libros con limon y sal</h1>
-            <p style="font-family: 'Times New Roman', Times, serif; text-align:center; color:white">Pagina Desarrollada para Programacion IV</a>.</p>
+<input type="hidden" name="CodigoAcceso" value="@Model.CodigoAcceso" />
+    @if (Model.CodigoAcceso == 3)
+    {
+        <h1 class="text-center" style="font-family: 'Times New Roman', Times, serif; padding: 20px 10px 10px">No Cuenta con Permisos en esta cuenta. Intente con otra.</h1>
+    }
+    else if (Model.CodigoAcceso == 4)
+    {
+    <div class="container custom-btn-color">
+        <h1 text-white>Libros Con Limon Y Sal</h1>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="ProductoCliente" asp-action="Index">Producto</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="EventosCliente" asp-action="Index">Eventos</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+            </button>
         </div>
     </div>
-</div>
+    <div class="container">
+        <img src="https://s26162.pcdn.co/wp-content/uploads/2022/05/Best-Reviewed-Books.jpeg" class="card-img" alt="Libros">
+        <div class="card-img-overlay">
+            <p class="text-center text-white" style="font-family: 'Times New Roman', Times, serif; padding: 20px 10px 10px">Biblioteca Libros con limon y sal</p>
+        </div>
+    </div>
+    }
+    else if (Model.CodigoAcceso == 2)
+    {
+    <div class="container custom-btn-color">
+        <h1 text-white>Libros Con Limon Y Sal</h1>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Producto" asp-action="Index">Producto</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Eventos" asp-action="Index">Eventos</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+            </button>
+        </div>
+    </div>
+    <div class="container">
+        <img src="https://s26162.pcdn.co/wp-content/uploads/2022/05/Best-Reviewed-Books.jpeg" class="card-img" alt="Libros">
+        <div class="centered text-white " style="font-size:5vw">Biblioteca Libros con Limon y Sal</div>
+        <div class="bottom-left text-white " style="font-size:2vw">Vista Vendedor</div>
+    </div>
+    }
+else if (Model.CodigoAcceso == 1)
+{
+    <div class="container custom-btn-color">
+        <h1 text-white>Libros Con Limon Y Sal</h1>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Producto" asp-action="Index">Producto</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Eventos" asp-action="Index">Eventos</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="User" asp-action="Index">Usuarios</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Home" asp-action="Privacy">Privacidad</a>
+            </button>
+            <button>
+                <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+            </button>
+        </div>
+    </div>
+    <div class="container">
+        <img src="https://s26162.pcdn.co/wp-content/uploads/2022/05/Best-Reviewed-Books.jpeg" class="card-img" alt="Libros">
+        <div class="centered text-white " style="font-size:5vw">Biblioteca Libros con Limon y Sal</div>
+        <div class="bottom-left text-white " style="font-size:2vw">Vista Vendedor</div>
+    </div>
+}

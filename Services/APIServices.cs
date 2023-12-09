@@ -1,5 +1,4 @@
 ﻿using CRUD_MVC.Models;
-using Newtonsoft.Json;
 
 namespace CRUD_MVC.Services
 {
@@ -60,9 +59,10 @@ namespace CRUD_MVC.Services
                 var usuario = await _httpClient.GetFromJsonAsync<User>($"api/User/{Cedula}/{Clave}");
                 return usuario;
             }
-            catch (Exception ex) {
-                return new User();                 
-            }   
+            catch (Exception ex)
+            {
+                return new User();
+            }
         }
 
         public Task<User> GetUser(int idUsuario)
