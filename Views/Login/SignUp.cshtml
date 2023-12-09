@@ -1,0 +1,39 @@
+﻿@model User
+<div class="split left">
+    <div class="centered">
+        <img src="https://greenvillejournal.com/wp-content/uploads/2021/12/stack-of-books-in-home-interior-picture-id532852345.jpg" class="card-img" alt="Libros">
+        <h2 style="padding: 40px 0px 10px 0px">Libros con Limon y Sal</h2>
+        <p>Vista Admin</p>
+    </div>
+</div>
+
+<div class="split right">
+    <form method="post">
+        <div class="centered">
+            <h2>Registrarse</h2>
+            <div class="mb-3" style="padding: 20px 1px 10px">
+                <label>Cedula:</label>
+                <input asp-for="Cedula" class="form-control" type="number">
+            </div>
+            <div class="mb-3" style="padding: 20px 1px 10px">
+                <label>Nombres Completos:</label>
+                <input asp-for="Nombres" class="form-control" type="text">
+            </div>
+            <div class="mb-3" style="padding: 20px 1px 10px">
+                <label>Apellidos Completos:</label>
+                <input asp-for="Apellidos" class="form-control" type="text">
+            </div>
+            <div class="mb-3" style="padding: 20px 1px 10px">
+                <label>Clave:</label>
+                <input asp-for="Clave" class="form-control" type="password">
+            </div>
+            <input type="hidden" asp-for="CodigoAcceso" value="4" />
+            <input type="hidden" asp-for="HaRetirado" value="false" />
+            <input type="hidden" asp-for="IdLibroRetirado" value="1" />
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="submit" class="btn custom-btn-color">Registrarse</button>
+                <a asp-action="Index" class="btn custom-btn-color-2">Iniciar Sesion</a>
+            </div>
+        </div>
+    </form>
+</div>

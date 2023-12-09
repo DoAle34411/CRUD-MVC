@@ -9,28 +9,24 @@
 
 <form method="post">
     <div class="mb-3">
-        <label>Nombre</label>
-        <input asp-for="Nombre" class="form-control">
+        <label>Nombre de libro:</label>
+        <input asp-for="Nombre" class="form-control" placeholder="Ej: El Principito">
     </div>
     <div class="mb-3">
-        <label>Autor</label>
-        <input asp-for="Autor" class="form-control">
+        <label>Autor del libro:</label>
+        <input asp-for="Autor" class="form-control" placeholder="Ej: Antoine de Saint-Exupéry">
     </div>
     <div class="mb-3">
-        <label>Genero</label>
-        <input asp-for="Genero" class="form-control">
+        <label>Genero literario:</label>
+        <input asp-for="Genero" class="form-control" placeholder="Ej: Infantil">
     </div>
     <div class="mb-3">
-        <label>Descripción</label>
-        <textarea asp-for="Descripcion" class="form-control"></textarea>
+        <label>Sinopsis:</label>
+        <textarea asp-for="Descripcion" class="form-control" placeholder="Ej: Fábula mítica y relato filosófico que interroga acerca de la relación del ser humano con su prójimo y con el mundo, El Principito..."></textarea>
     </div>
     <div class="mb-3">
-        <label>Cantidad</label>
-        <input asp-for="Cantidad" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label>Costo</label>
-        <input asp-for="Costo" class="form-control">
+        <label>Cantidad disponibles:</label>
+        <input asp-for="Cantidad" class="form-control" placeholder="Ej: 99">
     </div>
     <div class="row col-6">
         <div class="col-6">

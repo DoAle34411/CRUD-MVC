@@ -18,23 +18,41 @@ namespace CRUD_MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(User usuarioP)
+        public async Task<IActionResult> Index(string Cedula, string Clave)
         {
             Console.WriteLine("EnvioDatos");
-            User usuario_encontrado = await _apiService.GetUser(usuarioP.IdUsuario, usuarioP.Clave);
-            if (usuario_encontrado == null)
+            User usuario_encontrado = await _apiService.GetUser(Cedula, Clave);
+            Console.WriteLine(usuario_encontrado.Nombres);
+            if (usuario_encontrado == null  || usuario_encontrado.Nombres==null)
             {
-                Console.WriteLine("UsuarioNoEncontradoMVC");
+                Console.WriteLine("UsuarioNoEncontrado1");
                 return View();
             }
-            Console.WriteLine("UsuarioEncontradoMVC");
-            if (usuario_encontrado.codigoAcceso == 4) {
-                return RedirectToAction();
-            }
-            else
+            Console.WriteLine("UsuarioEncontradoMVC1");
+            return RedirectToAction("Index", "Home", usuario_encontrado);
+        }
+        public IActionResult SignUp()
+        {
+            Console.WriteLine("Nada");
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> SignUp(User user)
+        {
+            Console.WriteLine("EnvioDatos");
+            User usuario_encontrado = await _apiService.GetUser(user.Cedula, user.Clave);
+            if (usuario_encontrado != null || usuario_encontrado.Nombres != null)
             {
+                Console.WriteLine("UsuarioNoEncontradoMVC");
+                await _apiService.POSTUser(user);
                 return RedirectToAction("Index", "Home", usuario_encontrado);
             }
+            else 
+            {
+                Console.WriteLine("UsuarioEncontradoMVC");
+                return View();
+            }
+            
         }
     }
 }

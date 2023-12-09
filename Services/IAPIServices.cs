@@ -9,12 +9,9 @@ namespace CRUD_MVC.Services
         public Task<Producto> PUTProducto(int IdProducto, Producto producto);
         public Task<Producto> POSTProducto(Producto producto);
         public Task DeleteProducto(int id);
-
-        public Task<List<Vendedor>> GetSellers();
-        public Task<Vendedor> GetSeller(int Cedula);
-        public Task<Vendedor> PUTSeller(int IdProducto, Vendedor vendedor);
-        public Task<Vendedor> POSTSeller(Vendedor vendedor);
-        public Task DeleteSeller(int Cedula);
-        public Task<User> GetUser(int IdUsuario, string Clave);
+        public Task<User> GetUser(string Cedula, string Clave);
+        public Task<User> GetUser(int idUsuario);
+        public Task<User> PutUser(int idUsuario);
+        public Task<User> POSTUser(User user);
     }
 }

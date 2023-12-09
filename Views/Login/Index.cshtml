@@ -12,16 +12,17 @@
     <div class="centered">
         <h2>Inicio Sesion</h2>
         <div class="mb-3" style="padding: 20px 1px 10px">
-            <label>ID Usuario:</label>
-            <input asp-for="IdUsuario" class="form-control">
+            <label>Cedula:</label>
+            <input asp-for="Cedula" class="form-control" type="number">
         </div>
         <div class="mb-3" style="padding: 20px 1px 10px">
             <label>Clave:</label>
             <input asp-for="Clave" class="form-control" type="password">
         </div>
-        <div class="mb-3" style="padding: 20px 1px 10px">
-            <button type="submit" class="btn custom-btn-color">Iniciar Sesion</button>
-        </div>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <button type="submit" class="btn custom-btn-color">Iniciar Sesion</button>
+                <a asp-action="SignUp" class="btn custom-btn-color-2">Registrate</a>
+            </div>
     </div>
     </form>
 </div> 

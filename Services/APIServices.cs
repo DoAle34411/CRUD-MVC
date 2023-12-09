@@ -53,47 +53,21 @@ namespace CRUD_MVC.Services
             return productos;
         }
 
-        public async Task<Vendedor> GetSeller(int Cedula)
-        {
-             try
-             {
-                 var vendedor = await _httpClient.GetFromJsonAsync<Vendedor>("api/Vendedor/" + Cedula);
-                 return vendedor;
-             }
-             catch (Exception ex)
-             {
-                 return new Vendedor();
-             }
-            
-        }
-
-        public async Task<List<Vendedor>> GetSellers()
-        {
-
-            var response = await _httpClient.GetAsync("api/Vendedor/");
-            if (response.IsSuccessStatusCode)
-            {
-                var json_response = await response.Content.ReadAsStringAsync();
-                List<Vendedor> vendedor = JsonConvert.DeserializeObject<List<Vendedor>>(json_response);
-                return vendedor;
-            }
-            return new List<Vendedor>();
-            //var vendedores = await _httpClient.GetFromJsonAsync<List<Vendedor>>("api/Vendedor");
-           
-            //return vendedores;
-        }
-
-        public async Task<User> GetUser(int IdUsuario, string Clave)
+        public async Task<User> GetUser(string Cedula, string Clave)
         {
             try
             {
-                var usuario = await _httpClient.GetFromJsonAsync<User>($"/api/User/{IdUsuario}/{Clave}");
+                var usuario = await _httpClient.GetFromJsonAsync<User>($"api/User/{Cedula}/{Clave}");
                 return usuario;
             }
-            catch (Exception ex)
-            {
-                return new User();
-            }
+            catch (Exception ex) {
+                return new User();                 
+            }   
+        }
+
+        public Task<User> GetUser(int idUsuario)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<Producto> POSTProducto(Producto producto)
@@ -102,10 +76,10 @@ namespace CRUD_MVC.Services
             return producto;
         }
 
-        public async Task<Vendedor> POSTSeller(Vendedor vendedor)
+        public async Task<User> POSTUser(User user)
         {
-            await _httpClient.PostAsJsonAsync("api/Vendedor", vendedor);
-            return vendedor;
+            await _httpClient.PostAsJsonAsync("api/User", user);
+            return user;
         }
 
         public async Task<Producto> PUTProducto(int IdProducto, Producto producto)
@@ -114,10 +88,9 @@ namespace CRUD_MVC.Services
             return producto;
         }
 
-        public async Task<Vendedor> PUTSeller(int Cedula, Vendedor vendedor)
+        public Task<User> PutUser(int idUsuario)
         {
-            await _httpClient.PutAsJsonAsync("api/Vendedor/" + Cedula, vendedor);
-            return vendedor;
+            throw new NotImplementedException();
         }
     }
 }
