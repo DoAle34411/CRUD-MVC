@@ -2,13 +2,16 @@
 @{
     ViewData["Title"] = "Editar Producto";
 }
+@{
+    User user = ViewBag.User as User;
+    Console.WriteLine(user.IdUsuario);
+}
 <h1>@ViewData["Title"]</h1>
 
 <p>En esta página se editan los productos.</p>
 
 <form method="post">
     <input type="hidden" asp-for="IdProducto"/>
-
     <div class="mb-3">
         <label>Nombre del libro: </label>
         <input asp-for="Nombre" class="form-control">
@@ -29,13 +32,14 @@
         <label>Cantidad disponibles:</label>
         <input asp-for="Cantidad" class="form-control">
     </div>
-    <div class="row col-6">
-        <div class="col-6">
-            <a asp-action="Index" class="btn custom-btn-color-2">Regresar</a>
-        </div>
-        <div class="col-6">
-            <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
-        </div>
+    <input type="hidden" asp-for="IdUsuario" value="@user.IdUsuario" />
+    <div class="col-6">
+        <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
     </div>
-
 </form>
+    <div class="col-6">
+        <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+            <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+        <button type="submit" class="nav-link text-white custom-btn-color-2">Regresar</button>
+        </form>
+    </div>
