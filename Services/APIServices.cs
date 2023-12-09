@@ -7,7 +7,6 @@ namespace CRUD_MVC.Services
         public static string _baseUrl;
         public HttpClient _httpClient;
 
-
         public APIServices(IConfiguration configuration)
         {
             _httpClient = new HttpClient()
@@ -23,14 +22,33 @@ namespace CRUD_MVC.Services
             _httpClient.BaseAddress = new Uri(_baseUrl);
 
         }
+
+        public async Task DeleteEventos(int idEvento)
+        {
+            await _httpClient.DeleteAsync("api/Eventos/" + idEvento);
+        }
+
         public async Task DeleteProducto(int id)
         {
             await _httpClient.DeleteAsync("api/Producto/" + id);
         }
-
-        public async Task DeleteSeller(int Cedula)
+        public async Task<Eventos> GetEvento(int idEvento)
         {
-            await _httpClient.DeleteAsync("api/Vendedor/" + Cedula);
+            try
+            {
+                var eventos = await _httpClient.GetFromJsonAsync<Eventos>("api/Eventos/" + idEvento);
+                return eventos;
+            }
+            catch (Exception ex)
+            {
+                return new Eventos();
+            }
+        }
+
+        public async Task<List<Eventos>> GetEventos()
+        {
+            var eventos = await _httpClient.GetFromJsonAsync<List<Eventos>>("api/Eventos");
+            return eventos;
         }
 
         public async Task<Producto> GetProduct(int id)
@@ -78,6 +96,18 @@ namespace CRUD_MVC.Services
             }
         }
 
+        public async Task<List<User>> GetUsers()
+        {
+            var users = await _httpClient.GetFromJsonAsync<List<User>>("api/User");
+            return users;
+        }
+
+        public async Task<Eventos> POSTEventos(Eventos evento)
+        {
+            await _httpClient.PostAsJsonAsync("api/Eventos", evento);
+            return evento;
+        }
+
         public async Task<Producto> POSTProducto(Producto producto)
         {
             await _httpClient.PostAsJsonAsync("api/Producto", producto);
@@ -90,15 +120,22 @@ namespace CRUD_MVC.Services
             return user;
         }
 
+        public async Task<Eventos> PUTEventos(int idEvento, Eventos evento)
+        {
+            await _httpClient.PutAsJsonAsync("api/Eventos/" + idEvento, evento);
+            return evento;
+        }
+
         public async Task<Producto> PUTProducto(int IdProducto, Producto producto)
         {
             await _httpClient.PutAsJsonAsync("api/Producto/" + IdProducto, producto);
             return producto;
         }
 
-        public Task<User> PutUser(int idUsuario)
+        public async Task<User> PutUser(int idUsuario, User user)
         {
-            throw new NotImplementedException();
+            await _httpClient.PutAsJsonAsync("api/User/" + idUsuario, user);
+            return user;
         }
     }
 }

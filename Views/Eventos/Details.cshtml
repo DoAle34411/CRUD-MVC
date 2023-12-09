@@ -1,0 +1,39 @@
+﻿@model Eventos
+@{
+    ViewData["Title"] = "Detalles de Evento";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se muestra el detalle del evento.</p>
+
+<div class="mb-3">
+    <label>Nombre del evento:</label>
+    <input asp-for="NombreEvento" class="form-control" readonly>
+</div>
+<div class="mb-3">
+    <label>Descripcion Evento:</label>
+    <textarea asp-for="DescripcionEvento" readonly class="form-control"></textarea>
+</div>
+<div class="mb-3">
+    <label>Dia del Evento: </label>
+    <input asp-for="diaEvento" class="form-control" readonly>
+</div>
+@if (@Model.horaEvento != new TimeSpan(0,0,0))
+{
+    <div class="mb-3">
+        <label>Hora del Evento: </label>
+        <input asp-for="horaEvento" class="form-control" readonly>
+    </div>
+}
+@if (@Model.Expositores != "No especificado")
+{
+    <div class="mb-3">
+        <label>Expositores del Evento: </label>
+        <input asp-for="Expositores" class="form-control" readonly>
+    </div>
+}
+<div class="row col-6">
+    <div class="col-6">
+        <a asp-action="Index" class="btn custom-btn-color">Regresar</a>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿
+@model Eventos
+@{
+    ViewData["Title"] = "Crear Evento";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se crean los eventos.</p>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Nombre de Evento:</label>
+        <input asp-for="NombreEvento" class="form-control" placeholder="Ej: Conferencia con Pepe">
+    </div>
+    <div class="mb-3">
+        <label>Descripcion Evento:</label>
+        <textarea asp-for="DescripcionEvento" class="form-control" placeholder="Ej: El autor Pepe se presentara para explicar su tesis planteada en el libro..."></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Expositor del Evento:</label>
+        <input asp-for="Expositores" class="form-control" value="No especificado">
+    </div>
+    <div class="mb-3">
+        <label>Dia evento:</label>
+        <input asp-for="diaEvento" class="form-control" placeholder="2024-12-31">
+    </div>
+    <div class="mb-3">
+        <label>Hora evento (no cambie el valor si es todo el dia):</label>
+        <input asp-for="horaEvento" class="form-control" value="00:00:00">
+    </div>
+    <div class="row col-6">
+        <div class="col-6">
+            <button type="submit" class="btn custom-btn-color-2">Regresar</button>
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn custom-btn-color">Crear</button>
+        </div>
+    </div>
+</form>

@@ -12,17 +12,17 @@ namespace CRUD_MVC.Controllers
         {
             _APIServices = servicios;
         }
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(User user)
         {
-            var productos = await _APIServices.GetUsers();
-
-            return View(productos);
+            var users = await _APIServices.GetUsers();
+            ViewBag.User = user;
+            return View(users);
         }
 
-        public async Task<IActionResult> Details(int IdProducto)
+        public async Task<IActionResult> Details(int IdUsuario)
         {
-            var producto = await _APIServices.GetProduct(IdProducto);
-            if (producto != null) return View(producto);
+            var user = await _APIServices.GetUser(IdUsuario);
+            if (user != null) return View(user);
             return RedirectToAction("Index");
         }
 
@@ -32,23 +32,23 @@ namespace CRUD_MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Producto producto)
+        public async Task<IActionResult> Create(User user)
         {
-            await _APIServices.POSTProducto(producto);
+            await _APIServices.POSTUser(user);
             return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> Edit(int IdProducto)
+        public async Task<IActionResult> Edit(int IdUsuario)
         {
-            var producto = await _APIServices.GetProduct(IdProducto);
-            if (producto != null) return View(producto);
+            var user = await _APIServices.GetUser(IdUsuario);
+            if (user != null) return View(user);
             return RedirectToAction("Index");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Producto producto)
+        public async Task<IActionResult> Edit(User user)
         {
-            await _APIServices.PUTProducto(producto.IdProducto, producto);
+            await _APIServices.PutUser(user.IdUsuario, user);
             return RedirectToAction("Index");
         }
 

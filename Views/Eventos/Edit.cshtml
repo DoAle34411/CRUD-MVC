@@ -1,0 +1,40 @@
+﻿@model Eventos
+@{
+    ViewData["Title"] = "Editar Evento";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>En esta página se editan los eventos.</p>
+
+<form method="post">
+    <input type="hidden" asp-for="idEvento"/>
+    <div class="mb-3">
+        <label>Nombre de Evento:</label>
+        <input asp-for="NombreEvento" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Descripcion Evento:</label>
+        <textarea asp-for="DescripcionEvento" class="form-control"></textarea>
+    </div>
+    <div class="mb-3">
+        <label>Expositor del Evento:</label>
+        <input asp-for="Expositores" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Dia evento:</label>
+        <input asp-for="diaEvento" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label>Hora evento (mantenga el valor en ceros si es todo el dia):</label>
+        <input asp-for="horaEvento" class="form-control">
+    </div>
+    <div class="row col-6">
+        <div class="col-6">
+            <a asp-action="Index" class="btn custom-btn-color-2">Regresar</a>
+        </div>
+        <div class="col-6">
+            <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
+        </div>
+    </div>
+
+</form>

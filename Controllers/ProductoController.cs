@@ -15,23 +15,12 @@ namespace CRUD_MVC.Controllers
 
 
         // GET: ProductoController
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(User user)
         {
             var productos = await _APIServices.GetProducts();
-
+            ViewBag.User = user;
             return View(productos);
         }
-
-        // GET: ProductoController/Details/5
-        /*public IActionResult Details(int IdProducto)
-        {
-            Producto producto = Utils.ListaProducto.Find(x => x.IdProducto == IdProducto);
-            if (producto != null)
-            {
-                return View(producto);
-            }
-            return RedirectToAction("Index");
-        } */
 
         public async Task<IActionResult> Details(int IdProducto)
         {
@@ -61,31 +50,6 @@ namespace CRUD_MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: ProductoController/Edit/5
-        /*public IActionResult Edit(int IdProducto)
-        {
-            Producto producto = Utils.ListaProducto.Find(x => x.IdProducto == IdProducto);
-            if (producto != null)
-            {
-                return View(producto);
-            }
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Producto nuevo)
-        {
-            Producto antiguo = Utils.ListaProducto.Find(x => x.IdProducto == nuevo.IdProducto);
-            if (antiguo != null)
-            {
-                antiguo.Nombre = nuevo.Nombre;
-                antiguo.Descripcion = nuevo.Descripcion;
-                antiguo.Cantidad = nuevo.Cantidad;
-                return RedirectToAction("Index");
-            }
-            return RedirectToAction("Index");
-        } */
-
         public async Task<IActionResult> Edit(int IdProducto)
         {
             var producto = await _APIServices.GetProduct(IdProducto);
@@ -99,17 +63,6 @@ namespace CRUD_MVC.Controllers
             await _APIServices.PUTProducto(producto.IdProducto, producto);
             return RedirectToAction("Index");
         }
-
-        // GET: ProductoController/Delete/5
-        /*public IActionResult Delete(int IdProducto)
-        {
-            Producto producto = Utils.ListaProducto.Find(x => x.IdProducto == IdProducto);
-            if (producto != null)
-            {
-                Utils.ListaProducto.Remove(producto);
-            }
-            return RedirectToAction("Index");
-        } */
 
         public async Task<IActionResult> Delete(int IdProducto)
         {

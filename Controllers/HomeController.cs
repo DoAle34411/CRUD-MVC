@@ -17,6 +17,7 @@ namespace CRUD_MVC.Controllers
 
         public IActionResult Index(User usuario_encontrado)
         {
+            ViewBag.User = usuario_encontrado;
             return View(usuario_encontrado);
         }
 
