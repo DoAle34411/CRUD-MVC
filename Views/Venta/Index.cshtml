@@ -28,30 +28,36 @@ else if (user.CodigoAcceso == 2)
                 <h1 text-white>Libros Con Limon Y Sal</h1>
             </div>
             <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Home" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color" style="height:69px">Hogar</button>
+                </form>
+            </div>
+            <div class="col-1">
                 <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
                     <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
-                    <button type="submit" class="nav-link text-white custom-background-color">Productos</button>
+                    <button type="submit" class="nav-link text-white custom-background-color" style="height:69px">Productos</button>
                 </form>
             </div>
             <div class="col-1">
                 <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
                     <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
-                    <button type="submit" class="nav-link text-white custom-background-color">Eventos</button>
+                    <button type="submit" class="nav-link text-white custom-background-color" style="height:69px">Eventos</button>
                 </form>
             </div>
             <div class="col-1">
                 <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
                     <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
-                    <button type="submit" class="nav-link text-white custom-background-color">Privacidad</button>
+                    <button type="submit" class="nav-link text-white custom-background-color" style="height:69px">Privacidad</button>
                 </form>
             </div>
             <div class="col-1">
                 <form method="post" asp-area="" asp-controller="Venta" asp-action="Index">
                     <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
-                    <button type="submit" class="nav-link text-white custom-background-color">Renta</button>
+                    <button type="submit" class="nav-link text-white custom-background-color" style="height:69px">Rentas</button>
                 </form>
             </div>
-            <div class="col-2">
+            <div class="col-1">
                 <button>
                     <a class="nav-link text-white custom-background-color" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
                 </button>
@@ -62,10 +68,17 @@ else if (user.CodigoAcceso == 2)
         </div>
     </div>
     <div class="container">
-        
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <a asp-action="Retirar" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color">Retirar Libro </a>
-            <a asp-action="Devolver" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color-2">Devolver Libro</a>
+        <div class="text-center" style="padding: 40px 50px 10px" ;>
+            <h1 class="display-4">Acciones Renta Libros</h1>
+            <p>En esta página se puede rentar o devolver un libro.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center">
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a asp-action="Retirar" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color">Retirar Libro </a>
+                <a asp-action="Devolver" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color-2">Devolver Libro</a>
+            </div>
         </div>
     </div>
 }
