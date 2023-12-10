@@ -9,6 +9,7 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 @if (user.CodigoAcceso==1)
 {
     <div class="container custom-btn-color">
@@ -149,8 +150,14 @@ else if (user.CodigoAcceso==4)
     </div>
     <div class="container">
         <div class="text-center" style="padding: 40px 50px 10px" ;>
-            <h1 class="display-4">Lista Eventos</h1>
-            <p>En esta página se muestran los eventos disponibles</p>
+            <div id="parallax-world-of-ugg">
+                <section>
+                    <div class="title">
+                        <h1>Lista Eventos</h1>
+                        <h3 style="padding: 40px 50px 10px">En esta página se muestran los eventos futuros.</h3>
+                    </div>
+                </section>
+            </div>
         </div>
     <div class="text-center" style="padding: 20px 10px 10px" ;>
             <table class="table">

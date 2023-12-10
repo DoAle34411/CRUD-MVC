@@ -6,6 +6,7 @@
     User user = ViewBag.User as User;
     Console.WriteLine(user.CodigoAcceso);
 }
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
@@ -56,8 +57,14 @@ else if (user.CodigoAcceso == 4)
     </div>
     <div class="container">
         <div class="text-center" style="padding: 40px 50px 10px" ;>
-            <h1 class="display-4">Catalogo de Libros</h1>
-            <p>En esta página se muestran los libros disponibles</p>
+            <div id="parallax-world-of-ugg">
+                <section>
+                    <div class="title">
+                        <h1>Catalogo de Libros</h1>
+                        <h3 style="padding: 40px 50px 10px">En esta página se muestran los libros disponibles</h3>
+                    </div>
+                </section>
+            </div>
         </div>
     </div>
     <div class="container">

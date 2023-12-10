@@ -5,6 +5,7 @@
     User user = ViewBag.User as User;
 }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/system.text.json/6.0.1/system.text.json.min.js"></script>
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 <input type="hidden" name="CodigoAcceso" value="user.CodigoAcceso" />
     @if (user.CodigoAcceso == 3)
     {
@@ -52,8 +53,52 @@
         </div>
     </div>
     <div class="container">
-        <img src="https://s26162.pcdn.co/wp-content/uploads/2022/05/Best-Reviewed-Books.jpeg" class="card-img" alt="Libros">
-        <div class="centered text-white " style="font-size:5vw">Biblioteca Libros con Limon y Sal: Usuario</div>
+        <div id="parallax-world-of-ugg">
+            <section>
+                <div class="title">
+                    <h3>Biblioteca</h3>
+                    <h1>Libros Con Limon y Sal</h1>
+                </div>
+            </section>
+
+            <section>
+                <div class="parallax-one">
+                    <h2>Informacion</h2>
+                </div>
+            </section>
+
+            <section>
+                <div class="block">
+                    <p><span class="first-character sc">L</span>orem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec vehicula nunc. Sed porttitor tellus lectus. Sed ligula magna, efficitur commodo ante ac, dictum cursus risus. Nulla nec fringilla quam. Curabitur in augue ultrices, aliquam nisi eu, porta augue. Etiam vel auctor ligula. Ut dui ipsum, tincidunt a nisi a, mollis euismod neque. </p>
+                    <p class="line-break margin-top-10"></p>
+                    <p class="margin-top-10">Vivamus scelerisque viverra magna eget rhoncus. Vivamus tincidunt nec eros a efficitur. Morbi ipsum dui, scelerisque sed tincidunt et, tempor eget augue. Sed libero nibh, cursus luctus erat nec, imperdiet faucibus ligula. Curabitur quis nulla eget ligula viverra vulputate. Donec ut ornare nibh. Sed dolor nunc, fringilla eu ipsum bibendum, congue vulputate magna. Fusce quis neque eu tortor vehicula blandit sit amet ultricies nisl. Integer ullamcorper risus tempor sagittis faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nunc hendrerit dignissim consectetur. In tristique elit quis lacus pharetra congue. Phasellus efficitur urna sed nisi pulvinar, a ultricies diam pretium. Etiam rhoncus in massa eget hendrerit. </p>
+                </div>
+            </section>
+
+            <section>
+                <div class="parallax-two">
+                    <h2>MISION</h2>
+                </div>
+            </section>
+
+            <section>
+                <div class="block">
+                    <p><span class="first-character ny">A</span>liquam erat volutpat. Donec sed semper neque. Cras vel dolor ipsum. Nam non nisl et diam lacinia maximus. Mauris commodo feugiat libero, ac euismod diam lobortis sed. Curabitur nec quam nec elit venenatis sodales ultrices eget neque. Vivamus efficitur pulvinar massa ut tempor. Proin fermentum sollicitudin urna sed consectetur. Aliquam id felis velit. Phasellus in ligula ac metus venenatis tempus vitae ut justo. </p>
+                </div>
+            </section>
+
+            <section>
+                <div class="parallax-three">
+                    <h2>VISION</h2>
+                </div>
+            </section>
+
+            <section>
+                <div class="block">
+                    <p><span class="first-character atw">S</span>ed a malesuada enim. Aliquam suscipit tellus luctus nunc aliquet bibendum. Sed risus eros, porta vel feugiat eget, sagittis ut quam. Aenean molestie pretium consequat. Aliquam nibh massa, condimentum vel nibh vitae, pulvinar pretium lacus. Praesent sollicitudin fringilla lacus ut finibus. Donec vitae varius magna. Nunc convallis semper velit, eu commodo velit maximus ut. Proin augue sem, vestibulum ut elit pretium, sodales ornare elit. Nam et erat in massa convallis molestie. </p>
+                </div>
+            </section>
+        </div>
     </div>
     }
     else if (user.CodigoAcceso == 2)

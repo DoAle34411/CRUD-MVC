@@ -1,16 +1,23 @@
 ﻿@model User
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
 <div class="split left">
     <div class="centered">
-        <img src="https://greenvillejournal.com/wp-content/uploads/2021/12/stack-of-books-in-home-interior-picture-id532852345.jpg" class="card-img" alt="Libros">
-        <h2 style="padding: 40px 0px 10px 0px">Libros con Limon y Sal</h2>
-        <p>Registros</p>
+        <div id="parallax-world-of-ugg">
+            <h2 style="padding: 40px 0px 10px 0px; color:white">Libros con Limon y Sal</h2>
+        </div>
     </div>
 </div>
 
 <div class="split right">
     <form method="post">
         <div class="centered">
-            <h2>Registrarse</h2>
+            <div id="parallax-world-of-ugg">
+                <section>
+                    <div class="title">
+                        <h1>Registrate</h1>
+                    </div>
+                </section>
+            </div>
             <div class="mb-3" style="padding: 20px 1px 10px">
                 <label>Cedula:</label>
                 <input asp-for="Cedula" class="form-control" type="number">
@@ -23,7 +30,7 @@
                 <label>Apellidos Completos:</label>
                 <input asp-for="Apellidos" class="form-control" type="text">
             </div>
-            <div class="mb-3" style="padding: 20px 1px 10px">
+            <div class="mb-3" style="padding: 20px 1px 40px">
                 <label>Clave:</label>
                 <input asp-for="Clave" class="form-control" type="password">
             </div>
