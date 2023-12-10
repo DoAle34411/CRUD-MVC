@@ -2,6 +2,10 @@
 @{
     ViewData["Title"] = "Detalles de Usuario";
 }
+@{
+    User user2 = ViewBag.User as User;
+    Console.WriteLine(user2.CodigoAcceso);
+}
 <h1>@ViewData["Title"]</h1>
 
 <p>En esta página se muestra el detalle de los productos.</p>
@@ -31,6 +35,9 @@
     }
 <div class="row col-6">
     <div class="col-6">
-        <a asp-action="Index" class="btn custom-btn-color">Regresar</a>
+        <form method="post" asp-area="" asp-controller="User" asp-action="Index">
+            <textarea name="user" style="display:none;">@Json.Serialize(user2)</textarea>
+            <button type="submit" class="nav-link text-white custom-background-color">Regresar</button>
+        </form>
     </div>
 </div>

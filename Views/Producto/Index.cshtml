@@ -15,75 +15,42 @@
 }
 else if (user.CodigoAcceso == 4)
 {
-    <h1 class="text-center" style="font-family: 'Times New Roman', Times, serif; padding: 20px 10px 10px">No Cuenta con Permisos en esta cuenta. Intente con otra.</h1>
-}
-else if (user.CodigoAcceso == 2)
-{
     <div class="container custom-btn-color">
         <div class="row">
             <div class="col-4">
                 <h1 text-white>Libros Con Limon Y Sal</h1>
             </div>
             <div class="col-1">
-                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="user.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="user.Cedula" />
-                    <input type="hidden" name="Nombres" value="user.Nombres" />
-                    <input type="hidden" name="Apellidos" value="user.Apellidos" />
-                    <input type="hidden" name="Clave" value="user.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="user.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="user.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="user.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="3" />
-                    <button type="submit" class="nav-link text-white custom-background-color">Producto</button>
+                <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Productos</button>
                 </form>
             </div>
             <div class="col-1">
-                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="user.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="user.Cedula" />
-                    <input type="hidden" name="Nombres" value="user.Nombres" />
-                    <input type="hidden" name="Apellidos" value="user.Apellidos" />
-                    <input type="hidden" name="Clave" value="user.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="user.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="user.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="user.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="4" />
+                <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Eventos</button>
                 </form>
             </div>
             <div class="col-1">
                 <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
-                    <input type="hidden" name="IdUsuario" value="user.IdUsuario" />
-                    <input type="hidden" name="Cedula" value="user.Cedula" />
-                    <input type="hidden" name="Nombres" value="user.Nombres" />
-                    <input type="hidden" name="Apellidos" value="user.Apellidos" />
-                    <input type="hidden" name="Clave" value="user.Clave" />
-                    <input type="hidden" name="CodigoAcceso" value="user.CodigoAcceso" />
-                    <input type="hidden" name="HaRetirado" value="user.HaRetirado" />
-                    <input type="hidden" name="IdLibroRetirado" value="user.IdLibroRetirado" />
-                    <input type="hidden" name="Destino" value="2" />
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Privacidad</button>
                 </form>
             </div>
             <div class="col-2">
                 <button>
-                    <a class="nav-link text-white custom-background-color" asp-area="" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+                    <a class="nav-link text-white custom-background-color" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
                 </button>
             </div>
-            <div class="col-3">
-                <p>Que bueno verte de nuevo, user.Nombres!</p>
+            <div class="col-2">
+                <p>Que bueno verte de nuevo, @user.Nombres!</p>
             </div>
         </div>
     </div>
     <div class="container">
         <p class="display-4">Catalogo Libros</p>
         <p>En esta página se muestran los libros disponibles.</p>
-    </div>
-    <div class="container">
-        <div class="text-center" style="padding: 10px 10px 10px" ;>
-            <button type="submit" class="btn custom-btn-color" onclick="location.href='@Url.Action("Create", "Producto")'">Nuevo Producto</button>
-        </div>
     </div>
     <div class="container">
         <div class="text-center" style="padding: 20px 10px 10px" ;>
@@ -107,9 +74,78 @@ else if (user.CodigoAcceso == 2)
                             <td>@item.Cantidad</td>
                             <td class="centered-column" style="text-align: center">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a asp-action="Details" asp-route-IdProducto="@item.IdProducto" class="btn custom-btn-color"><i class="fa fa-eye" aria-hidden="true"></i> </a>
-                                    <a asp-action="Edit" asp-route-IdProducto="@item.IdProducto" class="btn custom-btn-color-2"><i class="fa fa-pencil" aria-hidden="true"></i> </a>
-                                    <a asp-action="Delete" asp-route-IdProducto="@item.IdProducto" class="btn custom-btn-color-3"><i class="fa fa-times" aria-hidden="true"></i> </a>
+                                    <a asp-action="Details" asp-route-IdProducto="@item.IdProducto" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color"><i class="fa fa-eye" aria-hidden="true"></i> </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+else if (user.CodigoAcceso == 2)
+{
+    <div class="container custom-btn-color">
+        <div class="row">
+            <div class="col-4">
+                <h1 text-white>Libros Con Limon Y Sal</h1>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Productos</button>
+                </form>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Eventos</button>
+                </form>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Privacidad</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <button>
+                    <a class="nav-link text-white custom-background-color" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+                </button>
+            </div>
+            <div class="col-2">
+                <p>Que bueno verte de nuevo, @user.Nombres!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <p class="display-4">Catalogo Libros</p>
+        <p>En esta página se muestran los libros disponibles.</p>
+    </div>
+    <div class="container">
+        <div class="text-center" style="padding: 20px 10px 10px" ;>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Cantidad</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.IdProducto</td>
+                            <td>@item.Nombre</td>
+                            <td>@item.Genero</td>
+                            <td>@item.Cantidad</td>
+                            <td class="centered-column" style="text-align: center">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a asp-action="Details" asp-route-IdProducto="@item.IdProducto" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color"><i class="fa fa-eye" aria-hidden="true"></i> </a>
                                 </div>
                             </td>
                         </tr>
@@ -166,7 +202,10 @@ else if (user.CodigoAcceso == 1)
     </div>
     <div class="container">
         <div class="text-center" style="padding: 10px 10px 10px" ;>
-            <button type="submit" class="btn custom-btn-color" onclick="location.href='@Url.Action("Create", "Producto", user.IdUsuario)'">Nuevo Producto</button>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                <a asp-action="Create" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color">Nuevo Producto </a>
+            </div>
+            
         </div>
     </div>
     <div class="container">

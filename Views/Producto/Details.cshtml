@@ -7,7 +7,6 @@
     Console.WriteLine(user.CodigoAcceso);
 }
 <h1>@ViewData["Title"]</h1>
-
 <p>En esta página se muestra el detalle de los productos.</p>
 
 <div class="mb-3">
@@ -31,8 +30,8 @@
     <input asp-for="Cantidad" class="form-control" readonly>
 </div>
 <div class="row col-6">
-    <<form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+    <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
         <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
-        <button type="submit" class="nav-link text-white custom-background-color">Productos</button>
+        <button type="submit" class="nav-link text-white custom-background-color">Regresar</button>
     </form>
 </div>

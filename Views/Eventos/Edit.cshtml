@@ -2,12 +2,17 @@
 @{
     ViewData["Title"] = "Editar Evento";
 }
+@{
+    User user = ViewBag.User as User;
+    Console.WriteLine(user.IdUsuario);
+}
 <h1>@ViewData["Title"]</h1>
 
 <p>En esta página se editan los eventos.</p>
 
 <form method="post">
     <input type="hidden" asp-for="idEvento"/>
+    <input type="hidden" asp-for="IdUsuario" value="@user.IdUsuario" />
     <div class="mb-3">
         <label>Nombre de Evento:</label>
         <input asp-for="NombreEvento" class="form-control">
@@ -30,11 +35,13 @@
     </div>
     <div class="row col-6">
         <div class="col-6">
-            <a asp-action="Index" class="btn custom-btn-color-2">Regresar</a>
-        </div>
-        <div class="col-6">
             <button type="submit" asp-action="Edit" class="btn custom-btn-color">Guardar</button>
         </div>
     </div>
-
 </form>
+<div class="col-6">
+    <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
+        <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+        <button type="submit" class="nav-link text-white custom-btn-color-2">Regresar</button>
+    </form>
+</div>

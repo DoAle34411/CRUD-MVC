@@ -23,6 +23,7 @@ namespace CRUD_MVC.Models
 
         [ForeignKey("Producto")]
         public int IdLibroRetirado { get; set; }
+        public int IdUsuarioActivo { get; set; }
 
     }
 }

@@ -32,14 +32,20 @@
         <label>Cantidad disponibles:</label>
         <input asp-for="Cantidad" class="form-control" placeholder="Ej: 99">
     </div>
-    <div class="row col-6">
-        <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
-            <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
-            <button type="submit" class="nav-link text-white custom-background-color">Productos</button>
-        </form>
-        <div class="col-6">
-            <button type="submit" class="btn custom-btn-color">Crear</button>
-        </div>
+    <input type="hidden" asp-for="IdUsuario" value="@user.IdUsuario" />
+    <div class="col-6">
+        <button type="submit" asp-action="Create" class="btn custom-btn-color">Guardar</button>
     </div>
-    
 </form>
+<div class="col-6">
+    <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+        <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+        <button type="submit" class="nav-link text-white custom-btn-color-2">Regresar</button>
+    </form>
+</div>
+<div class="col-6">
+    <form method="post" asp-area="" asp-controller="User" asp-action="Index">
+        <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+        <button type="submit" class="nav-link text-white custom-btn-color-2">Regresar</button>
+    </form>
+</div>

@@ -45,7 +45,7 @@ namespace CRUD_MVC.Controllers
             {
                 Console.WriteLine("UsuarioNoEncontradoMVC");
                 await _apiService.POSTUser(user);
-                return RedirectToAction("Index", "Home", usuario_encontrado);
+                return RedirectToAction("Index");
             }
             else
             {

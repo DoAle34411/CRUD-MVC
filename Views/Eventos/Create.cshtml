@@ -1,7 +1,10 @@
-﻿
-@model Eventos
+﻿@model Eventos
 @{
     ViewData["Title"] = "Crear Evento";
+}
+@{
+    User user = ViewBag.User as User;
+    Console.WriteLine(user.CodigoAcceso);
 }
 <h1>@ViewData["Title"]</h1>
 
@@ -28,12 +31,16 @@
         <label>Hora evento (no cambie el valor si es todo el dia):</label>
         <input asp-for="horaEvento" class="form-control" value="00:00:00">
     </div>
+    <input type="hidden" asp-for="IdUsuario" value="@user.IdUsuario" />
     <div class="row col-6">
-        <div class="col-6">
-            <button type="submit" class="btn custom-btn-color-2">Regresar</button>
-        </div>
         <div class="col-6">
             <button type="submit" class="btn custom-btn-color">Crear</button>
         </div>
     </div>
 </form>
+<div class="col-6">
+    <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
+        <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+        <button type="submit" class="nav-link text-white custom-btn-color-2">Regresar</button>
+    </form>
+</div>

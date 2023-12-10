@@ -1,8 +1,9 @@
 ﻿using CRUD_MVC.Models;
 using CRUD_MVC.Services;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.ConstrainedExecution;
 using System.Text.Json;
+using System;
+using System.Threading.Tasks;
 
 namespace CRUD_MVC.Controllers
 {
@@ -33,11 +34,8 @@ namespace CRUD_MVC.Controllers
 
         public async Task<IActionResult> Index(int IdUsuario)
         {
-            Console.WriteLine(IdUsuario);
             var user = await _APIServices.GetUser(IdUsuario);
             ViewBag.User = user;
-
-            // Rest of your code
             var productos = await _APIServices.GetProducts();
             return View(productos);
         }
@@ -52,16 +50,20 @@ namespace CRUD_MVC.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Create(int IdUsuario)
+        public async Task<IActionResult> Create(int IdUsuario)
         {
+            User user = await _APIServices.GetUser(IdUsuario);
+            ViewBag.User = user;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(Producto producto)
         {
+            int IdUsuario = producto.IdUsuario;
+            Console.WriteLine(IdUsuario);
             await _APIServices.POSTProducto(producto);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { IdUsuario = IdUsuario });
         }
 
         public async Task<IActionResult> Edit(int IdProducto, int IdUsuario)
@@ -74,20 +76,13 @@ namespace CRUD_MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(int IdProducto, string Nombre, string Descripcion, int Cantidad, string Autor, string Genero, int IdUsuario)
+        public async Task<IActionResult> Edit(Producto producto)
         {
-            Producto producto = new Producto();
-            Console.WriteLine(IdProducto+Nombre);
-            producto.IdProducto = IdProducto;
-            producto.Nombre = Nombre;
-            producto.Descripcion = Descripcion;
-            producto.Cantidad=Cantidad;
-            producto.Autor = Autor;
-            producto.Genero = Genero;
+            int IdUsuario = producto.IdUsuario;
             Console.WriteLine(IdUsuario);
             await _APIServices.PUTProducto(producto.IdProducto, producto);
             Console.WriteLine(1122);
-            return RedirectToAction("Index", IdUsuario);
+            return RedirectToAction("Index", new { IdUsuario = IdUsuario });
         }
 
         public async Task<IActionResult> Delete(int IdProducto, int IdUsuario)
@@ -96,8 +91,7 @@ namespace CRUD_MVC.Controllers
             ViewBag.User = user;
             Console.WriteLine($"El Id enviado fue: {IdProducto}");
             await _APIServices.DeleteProducto(IdProducto);
-
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { IdUsuario = IdUsuario });
         }
 
 
