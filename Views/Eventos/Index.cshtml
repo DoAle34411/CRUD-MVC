@@ -100,3 +100,79 @@ else if (user.CodigoAcceso == 3)
 {
     <h1 class="text-center" style="font-family: 'Times New Roman', Times, serif; padding: 20px 10px 10px">No Cuenta con Permisos en esta cuenta. Intente con otra.</h1>
 }
+else if (user.CodigoAcceso==4)
+{
+    <div class="container custom-btn-color">
+        <div class="row">
+            <div class="col-4">
+                <h1 text-white>Libros Con Limon Y Sal</h1>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Productos</button>
+                </form>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Eventos" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Eventos</button>
+                </form>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Privacidad</button>
+                </form>
+            </div>
+            <div class="col-2">
+                <button>
+                    <a class="nav-link text-white custom-background-color" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
+                </button>
+            </div>
+            <div class="col-2">
+                <p>Que bueno verte de nuevo, @user.Nombres!</p>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="text-center" style="padding: 40px 50px 10px" ;>
+            <h1 class="display-4">Lista Eventos</h1>
+            <p>En esta página se muestran los eventos disponibles</p>
+        </div>
+    <div class="text-center" style="padding: 20px 10px 10px" ;>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id Evento</th>
+                        <th scope="col">Nombre Evento</th>
+                        <th scope="col">Dia Evento</th>
+                        <th scope="col">Expositores</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        DateTime now = DateTime.Now;
+                        now = new DateTime(now.Year, now.Month, now.Day, 0, 0, 0);
+                        if (item.diaEvento > now)
+                        {
+                            <tr>
+                                <td>@item.idEvento</td>
+                                <td>@item.NombreEvento</td>
+                                <td>@item.diaEvento</td>
+                                <td>@item.Expositores</td>
+                                <td class="centered-column" style="text-align: center">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <a asp-action="Details" asp-route-IdEvento="@item.idEvento" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color"><i class="fa fa-eye" aria-hidden="true"></i> </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
