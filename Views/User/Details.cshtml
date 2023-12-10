@@ -9,7 +9,10 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>En esta página se muestra el detalle de los productos.</p>
-
+<div class="mb-3">
+    <label>Id Usuario:</label>
+    <input asp-for="IdUsuario" class="form-control" readonly>
+</div>
 <div class="mb-3">
     <label>Nombres Completos:</label>
     <input asp-for="Nombres" class="form-control" readonly>

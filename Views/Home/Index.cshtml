@@ -40,6 +40,12 @@
                     <a class="nav-link text-white custom-background-color" asp-controller="Login" asp-action="Index">Cerrar Sesion</a>
                 </button>
             </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Venta" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Renta</button>
+                </form>
+            </div>
             <div class="col-2">
                 <p>Que bueno verte de nuevo, @user.Nombres!</p>
             </div>
@@ -73,6 +79,12 @@
                 <form method="post" asp-area="" asp-controller="Home" asp-action="Privacy">
                     <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
                     <button type="submit" class="nav-link text-white custom-background-color">Privacidad</button>
+                </form>
+            </div>
+            <div class="col-1">
+                <form method="post" asp-area="" asp-controller="Venta" asp-action="Index">
+                    <textarea name="user" style="display:none;">@Json.Serialize(user)</textarea>
+                    <button type="submit" class="nav-link text-white custom-background-color">Rentas</button>
                 </form>
             </div>
             <div class="col-2">

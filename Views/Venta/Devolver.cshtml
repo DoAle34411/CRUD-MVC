@@ -1,0 +1,32 @@
+﻿@model Temporal
+@{
+    ViewData["Title"] = "Devolver Libro de Usuario";
+}
+@{
+    User user2 = ViewBag.User as User;
+    Console.WriteLine(user2.CodigoAcceso);
+}
+<h1>@ViewData["Title"]</h1>
+<p>En esta página se realiza el registro de la devolucion.</p>
+<form method="post">
+    <div class="mb-3">
+        <label>Id de Usuario:</label>
+        <input asp-for="IdUsuario" class="form-control" placeholder="Ej: 6">
+    </div>
+    <div class="mb-3">
+        <label>Id de libro:</label>
+        <input asp-for="IdLibro" class="form-control" placeholder="Ej: 1">
+    </div>
+    <div class="mb-3">
+        <input type="hidden" asp-for="IdUsuarioActivo" value="@user2.IdUsuario">
+    </div>
+    <div class="col-6">
+        <button type="submit" asp-action="Devolver" class="btn custom-btn-color">Guardar</button>
+    </div>
+</form>
+<div class="col-6">
+    <form method="post" asp-area="" asp-controller="Producto" asp-action="Index">
+        <textarea name="user" style="display:none;">@Json.Serialize(user2)</textarea>
+        <button type="submit" class="nav-link text-white custom-btn-color-2">Regresar</button>
+    </form>
+</div>
