@@ -8,7 +8,10 @@
 }
 <h1>@ViewData["Title"]</h1>
 <p>En esta página se muestra el detalle de los productos.</p>
-
+<div class="col-2">
+    <img src="@Model.urlImage" height="250" width="185"
+         style="border-radius: 5px; border: 1px solid #bbb9b9; " />
+</div>
 <div class="mb-3">
     <label>Nombre del libro:</label>
     <input asp-for="Nombre" class="form-control" readonly>

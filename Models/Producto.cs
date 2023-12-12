@@ -18,5 +18,6 @@ namespace CRUD_MVC.Models
         [Required]
         public string Genero { get; set; }
         public int IdUsuario { get; set; }
+        public string urlImage { get; set; }
     }
 }

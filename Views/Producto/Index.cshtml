@@ -73,6 +73,7 @@ else if (user.CodigoAcceso == 4)
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
+                        <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Genero</th>
                         <th scope="col">Cantidad</th>
@@ -84,6 +85,7 @@ else if (user.CodigoAcceso == 4)
                     {
                         <tr>
                             <td>@item.IdProducto</td>
+                            <td><img src="@item.urlImage" height="100" width="100"></td>
                             <td>@item.Nombre</td>
                             <td>@item.Genero</td>
                             <td>@item.Cantidad</td>
@@ -158,6 +160,7 @@ else if (user.CodigoAcceso == 2)
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
+                        <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Genero</th>
                         <th scope="col">Cantidad</th>
@@ -169,6 +172,7 @@ else if (user.CodigoAcceso == 2)
                     {
                         <tr>
                             <td>@item.IdProducto</td>
+                            <td><img src="@item.urlImage" height="100" width="100"></td>
                             <td>@item.Nombre</td>
                             <td>@item.Genero</td>
                             <td>@item.Cantidad</td>
@@ -236,6 +240,11 @@ else if (user.CodigoAcceso == 1)
             <h1 class="display-4">Catalogo de Libros</h1>
             <p>En esta página se muestran los libros disponibles</p>
         </div>
+        <div class="text-center" style="padding: 10px 10px 10px" ;>
+            <div class="text-center" style="padding: 10px 10px 10px" ;>
+                <a asp-action="Create" asp-route-IdUsuario="@user.IdUsuario" class="btn custom-btn-color">Nuevo Libro </a>
+            </div>
+        </div>
     </div>
     <div class="container">
         <div class="text-center" style="padding: 20px 10px 10px" ;>
@@ -243,6 +252,7 @@ else if (user.CodigoAcceso == 1)
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
+                        <th scope="col">Imagen</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Genero</th>
                         <th scope="col">Cantidad</th>
@@ -254,6 +264,7 @@ else if (user.CodigoAcceso == 1)
                     {
                         <tr>
                             <td>@item.IdProducto</td>
+                            <td><img src="@item.urlImage" height="100" width="100"></td>
                             <td>@item.Nombre</td>
                             <td>@item.Genero</td>
                             <td>@item.Cantidad</td>

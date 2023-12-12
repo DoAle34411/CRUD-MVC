@@ -4,16 +4,18 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CRUD_MVC.Controllers
 {
     public class ProductoController : Controller
     {
         private readonly IAPIServices _APIServices;
-
-        public ProductoController(IAPIServices servicios)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public ProductoController(IAPIServices servicios, IWebHostEnvironment webHostEnvironment)
         {
             _APIServices = servicios;
+            _webHostEnvironment = webHostEnvironment;
         }
 
 
@@ -58,8 +60,21 @@ namespace CRUD_MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Producto producto)
+        public async Task<IActionResult> Create(Producto producto, IFormFile? file)
         {
+            Console.WriteLine(producto.Nombre,producto.Cantidad);
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string productPath = Path.Combine(wwwRootPath, @"images\products");
+                using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                producto.urlImage = @"\images\products\" + fileName;
+
+            }
             int IdUsuario = producto.IdUsuario;
             Console.WriteLine(IdUsuario);
             await _APIServices.POSTProducto(producto);
@@ -76,10 +91,21 @@ namespace CRUD_MVC.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Producto producto)
+        public async Task<IActionResult> Edit(Producto producto, IFormFile? file)
         {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
             int IdUsuario = producto.IdUsuario;
             Console.WriteLine(IdUsuario);
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string productPath = Path.Combine(wwwRootPath, @"images\products");
+                using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+                producto.urlImage = @"\images\products\" + fileName;
+            }
             await _APIServices.PUTProducto(producto.IdProducto, producto);
             Console.WriteLine(1122);
             return RedirectToAction("Index", new { IdUsuario = IdUsuario });
